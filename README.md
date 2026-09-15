@@ -27,3 +27,7 @@ Bên cạnh đó, văn hóa mã nguồn mở khuyến khích sự chia sẻ, tá
    * *Giấy phép:* PostgreSQL License (giấy phép dạng permissive, tương tự MIT/BSD)
 5. **OBS Studio (Open Broadcaster Software)**
    * *Giấy phép:* GNU General Public License v2 (GPLv2)
+## Giấy phép
+Mã nguồn trong kho này được phát hành
+theo [Giấy phép MIT](LICENSE).
+SPDX-License-Identifier: MIT
