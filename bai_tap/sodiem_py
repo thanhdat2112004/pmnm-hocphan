@@ -1,0 +1,47 @@
+from flask import Flask, render_template, request, jsonify
+
+app = Flask(__name__)
+
+STUDENTS = [
+    {"mssv": "SV01", "name": "Nguyễn Văn A", "lop": "K47A", "gpa": 8.5, "grade": "Giỏi"},
+    {"mssv": "SV02", "name": "Trần Thị B", "lop": "K47B", "gpa": 6.8, "grade": "Khá"},
+    {"mssv": "SV03", "name": "Lê Văn C", "lop": "K47A", "gpa": None, "grade": "Chưa xếp loại"},
+    {"mssv": "SV04", "name": "Phạm Thị D", "lop": "K47C", "gpa": 9.1, "grade": "Xuất sắc"},
+]
+
+@app.route('/')
+def home():
+    total_students = len(STUDENTS)
+
+    unique_classes = list(set([s['lop'] for s in STUDENTS]))
+    total_classes = len(unique_classes)
+    
+    return render_template('home.html', 
+                           total_students=total_students, 
+                           total_classes=total_classes)
+
+
+@app.route('/api/students')
+def api_students():
+    return jsonify(STUDENTS)
+
+@app.route('/students')
+def student_list():
+    selected_class = request.args.get('lop', '').strip()
+    
+  
+    all_classes = sorted(list(set([s['lop'] for s in STUDENTS])))
+    filtered_students = STUDENTS
+    if selected_class:
+        filtered_students = [
+            s for s in STUDENTS 
+            if s['lop'].lower() == selected_class.lower()
+        ]
+        
+    return render_template('students.html', 
+                           students=filtered_students, 
+                           all_classes=all_classes, 
+                           selected_class=selected_class)
+
+if __name__ == '__main__':
+    app.run(debug=True)
