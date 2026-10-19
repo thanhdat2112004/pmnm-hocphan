@@ -1,0 +1,14 @@
+venv/
+env/
+.venv/
+
+# Bộ nhớ đệm Python
+__pycache__/
+*.py[cod]
+
+# Cấu hình IDE / Trình soạn thảo
+.vscode/
+.idea/
+
+# Biến môi trường
+.env
