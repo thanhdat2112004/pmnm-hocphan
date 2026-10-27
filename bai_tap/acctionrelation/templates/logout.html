@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block title %}Đăng xuất{% endblock %}
+{% block content %}
+    <h2>Đăng xuất tài khoản</h2>
+    <p>Bạn có chắc chắn muốn đăng xuất khỏi hệ thống không?</p>
+    
+    <form action="{{ url_for('logout') }}" method="POST">
+        <button type="submit" style="background-color: #dc3545; color: white;">Xác nhận đăng xuất</button>
+        <a href="{{ url_for('index') }}" style="margin-left: 10px; padding: 10px 15px; background: #6c757d; color: white; text-decoration: none; border-radius: 4px; display: inline-block;">Hủy / Quay lại</a>
+    </form>
+{% endblock %}
